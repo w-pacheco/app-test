@@ -1,0 +1,28 @@
+{
+  "name": "app-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "live-server --open=app.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/w-pacheco/app-test.git"
+  },
+  "author": "Wilfredo Pacheco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/w-pacheco/app-test/issues"
+  },
+  "homepage": "https://github.com/w-pacheco/app-test#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "jquery": "^3.6.1",
+    "jszip": "^3.10.1",
+    "live-server": "^1.2.2",
+    "pace-js": "^1.2.4",
+    "pdfmake": "^0.2.6"
+  }
+}
