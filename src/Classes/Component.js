@@ -11,9 +11,9 @@ class Component {
         
         if (!arg) throw new Error('Invalid request!');
         
-        // this.callstack = {
-        //     message: new Error(),
-        // }
+        this.store = {
+            callstack: new Error(),
+        }
 
         /** If the instance of the argument is HTMLElement an element the options are set to null; */
         this.options = arg instanceof HTMLElement ? 
@@ -24,10 +24,13 @@ class Component {
         this.Element = arg instanceof HTMLElement ? 
         CreateElement({}, arg) :
         CreateElement(arg);
-              
+
+        /** This will set the DOM element with the component instance; */
+        this.Element.component = this;
+        this.Element.setAttribute('component', '');
+
     }
 
-    // message = new Error();
     /**
      * render
      * @param {Object} parent is the element this will be appended to
@@ -57,38 +60,38 @@ class Component {
         return this.Element.getOriginalOptions();
     }
 
-    // getCallStack(){
+    getCallStack(){
         
-    //     const StackArray = this.callstack.message.stack.split(' '); // Split the string on the space;
-    //     StackArray.shift(); // Remove the error string from the front of the array;
+        const StackArray = this.store.callstack.stack.split(' '); // Split the string on the space;
+        StackArray.shift(); // Remove the error string from the front of the array;
 
-    //     /** Create a new array from the valid strings; */
-    //     const CallerStack = StackArray
-    //     .filter(str => !!str && str !== 'at')
-    //     .map(str => {
+        /** Create a new array from the valid strings; */
+        const CallerStack = StackArray
+        .filter(str => !!str && str !== 'at')
+        .map(str => {
 
-    //         str = str.trim().replace(/[()]/gi, ''); // Replace the paren from the js file url;
+            str = str.trim().replace(/[()]/gi, ''); // Replace the paren from the js file url;
 
-    //         /** Return the end of the array which includes the file name, col no, line no; */
-    //         if (str.includes('/')) return str.split('/').pop();
+            /** Return the end of the array which includes the file name, col no, line no; */
+            if (str.includes('/')) return str.split('/').pop();
 
-    //         /** Just return the string; */
-    //         else return str;
+            /** Just return the string; */
+            else return str;
 
-    //     });
+        });
 
-    //     /** @returns an filtered array of objects; */
-    //     return CallerStack.map((str, index) => {
-    //         if (!str.includes(':')) return {
-    //             caller: str,
-    //             file: CallerStack[index + 1],
-    //             location: StackArray
-    //             .find(str => str.includes(CallerStack[index + 1]))
-    //             ?.trim()
-    //             ?.replace(/[()]/gi, ''),
-    //         }            
-    //     }).filter(item => !!item);
-    // }
+        /** @returns an filtered array of objects; */
+        return CallerStack.map((str, index) => {
+            if (!str.includes(':')) return {
+                caller: str,
+                file: CallerStack[index + 1],
+                location: StackArray
+                .find(str => str.includes(CallerStack[index + 1]))
+                ?.trim()
+                ?.replace(/[()]/gi, ''),
+            }            
+        }).filter(item => !!item);
+    }
 
 }
 

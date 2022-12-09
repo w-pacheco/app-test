@@ -15,7 +15,7 @@ import Form from './src/Classes/Form.js';
 import Record from "./src/Albums/Record.js";
 // import Render from './app.Render.js';
 
-const {pathname} = location;
+// const { pathname } = location;
 const App = new Application();
 
 export default App;

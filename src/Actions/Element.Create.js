@@ -16,7 +16,7 @@ export default function CreateElement(options, Element){
     if (!!Element 
     && !(Element instanceof HTMLElement)) throw new Error('The element passed is not valid!');
     
-    const message = new Error(); // Used to find caller;
+    // const message = new Error(); // Used to find caller;
 
     const {
         tag, // String
@@ -41,14 +41,14 @@ export default function CreateElement(options, Element){
 
     // Add Element properties;
     !!attributes ? 
-    attributes.forEach(function({name, value}){
+    attributes.forEach(function({ name, value }){
         Element.setAttribute(name, value);
     }) : 
     '';
 
     // Add Element events;
     !!events ? 
-    events.forEach(function({name, action}){
+    events.forEach(function({ name, action }){
         Element.addEventListener(name, action);
     }) : 
     '';
@@ -103,34 +103,34 @@ export default function CreateElement(options, Element){
      * @description Used to get caller information and help developers trouble shoot; 
      * @returns Array;
      */
-    const getCallStack = function getCallStack(){
+    // const getCallStack = function getCallStack(){
         
-        const StackArray = message.stack.split(' '); // Split the string on the space;
-        StackArray.shift(); // Remove the error string from the front of the array;
+    //     const StackArray = message.stack.split(' '); // Split the string on the space;
+    //     StackArray.shift(); // Remove the error string from the front of the array;
 
-        /** Create a new array from the valid strings; */
-        const CallerStack = StackArray.filter(str => !!str && str !== 'at').map(str => {
-            str = str.trim().replace(/[()]/gi, '') // Replace the paren from the js file url;
+    //     /** Create a new array from the valid strings; */
+    //     const CallerStack = StackArray.filter(str => !!str && str !== 'at').map(str => {
+    //         str = str.trim().replace(/[()]/gi, '') // Replace the paren from the js file url;
 
-            /** Return the end of the array which includes the file name, col no, line no; */
-            if (str.includes('/')) return str.split('/').pop();
+    //         /** Return the end of the array which includes the file name, col no, line no; */
+    //         if (str.includes('/')) return str.split('/').pop();
 
-            /** Just return the string; */
-            else return str;
-        });
+    //         /** Just return the string; */
+    //         else return str;
+    //     });
 
-        /** @returns an filtered array of objects; */
-        return CallerStack.map((str, index) => {
-            if (!str.includes(':')) return {
-                caller: str,
-                file: CallerStack[index + 1],
-                location: StackArray.find(str => str.includes(CallerStack[index + 1]))?.trim()?.replace(/[()]/gi, '')
-            }            
-        }).filter(item => !!item)
-    }
+    //     /** @returns an filtered array of objects; */
+    //     return CallerStack.map((str, index) => {
+    //         if (!str.includes(':')) return {
+    //             caller: str,
+    //             file: CallerStack[index + 1],
+    //             location: StackArray.find(str => str.includes(CallerStack[index + 1]))?.trim()?.replace(/[()]/gi, '')
+    //         }            
+    //     }).filter(item => !!item)
+    // }
 
     !!customProperties ? 
-    customProperties.forEach(function({prop, value}){
+    customProperties.forEach(function({ prop, value }){
         SetCustomProperty(prop, value);
     }) : 
     '';
@@ -139,7 +139,7 @@ export default function CreateElement(options, Element){
     Element.setCustomProperty = SetCustomProperty;
     Element.render = render;
     Element.getOriginalOptions = getOriginalOptions;
-    Element.getCallStack = getCallStack;
+    // Element.getCallStack = getCallStack;
 
     return Element;
 }
