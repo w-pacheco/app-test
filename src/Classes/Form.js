@@ -7,7 +7,7 @@ import Component from "./Component.js";
 import Fields from './Fields.js';
 import Values from "./Values.js";
 
-class Form extends Component{
+class Form extends Component {
 
     constructor(options){
 

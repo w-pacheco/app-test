@@ -30,6 +30,7 @@ class Fields {
     }
 
     validate(){
+        // console.info(this.Element.checkValidity());
         if (this.Element.checkValidity() === false)
         {
             this.Element.classList.add('was-validated');
@@ -75,7 +76,7 @@ class Fields {
             });
         }
 
-        return !this.Element.checkValidity();
+        return this.Element.checkValidity();
     }
 }
 

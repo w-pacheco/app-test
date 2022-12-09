@@ -11,6 +11,8 @@ import './node_modules/pace-js/pace.js'
 // import CreateElement from './src/Actions/Element.Create.js';
 import Component from './src/Classes/Component.js';
 import Form from './src/Classes/Form.js';
+// import Album from "./src/Albums/Album.js";
+import Record from "./src/Albums/Record.js";
 // import Render from './app.Render.js';
 
 const {pathname} = location;
@@ -20,44 +22,13 @@ export default App;
 
 async function init(){
 
-    console.info(App)
+    console.info(App);
 
-    const Content = new Component({
-        tag: 'content',
-        classList: 'px-3 py-2 w-100',
-        parent: document.body,
-        innerHTML: /*html*/`
-        <nav class="navbar navbar-expand-lg bg-light mb-4 w-100">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="${pathname}">MapMySite</a>
-                <button class="navbar-toggler" 
-                        type="button" data-bs-toggle="collapse" 
-                        data-bs-target="#navbarNav" 
-                        aria-controls="navbarNav" 
-                        aria-expanded="false" 
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav"></ul>
-                </div>
-            </div>
-        </nav>
-        <div class="w-100" data-home></div>
-        <div class="accordion w-100" id="accordionPanelsStayOpen"></div>`,
-    })
-    // .render();
-
-    // const HomeContainer = Content.querySelector('div[data-home]');
-    // const Container = Content.querySelector('div#accordionPanelsStayOpen');
-    // const NavContainer = Content.querySelector('ul.navbar-nav');
-
-    // Layout = {
-    //     Content,
-    //     HomeContainer,
-    //     Container,
-    //     NavContainer,
-    // }
+    // const album = new Record({
+    //     title: 'Logans Favorites', 
+    //     genre: 'Country'
+    // });
+    // console.info(album)
 
     const component = new Component({
         tag: 'div',
@@ -86,12 +57,12 @@ async function init(){
         innerHTML: /*html*/`
         <div class="col-md-6">
             <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
+            <input name="Email" type="email" class="form-control" id="inputEmail4" value="john.doe@mail.com" required>
         </div>
         <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">date</label>
+            <label for="inputEmail4" class="form-label">CurrentDate</label>
             <!-- <input type="email" class="form-control" id="inputEmail4"> -->
-            <input class="form-control" type="date" id="start" name="trip-start"
+            <input class="form-control" type="date" id="start" name="CurrentDate"
                 value="2018-07-22"
                 min="2018-01-01" max="2018-12-31">
         </div>
@@ -101,15 +72,15 @@ async function init(){
         </div>
         <div class="col-12">
             <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            <input name="Address" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" value="1234 Main St">
         </div>
         <div class="col-12">
             <label for="inputAddress2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            <input name="Address2" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value="Apartment, studio, or floor">
         </div>
         <div class="col-md-6">
             <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
+            <input type="text" class="form-control" id="inputCity" required>
         </div>
         <div class="col-md-4">
             <label for="inputState" class="form-label">State</label>
@@ -120,11 +91,11 @@ async function init(){
         </div>
         <div class="col-md-2">
             <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
+            <input type="text" class="form-control" id="inputZip" name="Zip" value="12345">
         </div>
         <div class="col-12">
             <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <input name="checkmeout" class="form-check-input" type="checkbox" id="gridCheck">
             <label class="form-check-label" for="gridCheck">
                 Check me out
             </label>
@@ -139,6 +110,8 @@ async function init(){
         component,
         form,
     });
+
+    window.form = form;
 
     console.info(new Component(document.body));
 

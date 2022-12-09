@@ -23,7 +23,8 @@ class Component {
         /** If the instance of the argument is HTMLElement an element is supercharged, else it is created; */
         this.Element = arg instanceof HTMLElement ? 
         CreateElement({}, arg) :
-        CreateElement(arg);        
+        CreateElement(arg);
+              
     }
 
     // message = new Error();
