@@ -24,13 +24,17 @@ class Fields {
         else return fields.querySelector(arg);
     }
 
+    /**
+     * focus
+     * @description By default the method will focus on the first field.
+     * @param {String} arg string name of the field to focus on.
+     */
     focus(arg){
-        const fields = Fields.get();
+        const fields = this.get();
         if (!arg && fields.length) fields[0].focus();
     }
 
     validate(){
-        // console.info(this.Element.checkValidity());
         if (this.Element.checkValidity() === false)
         {
             this.Element.classList.add('was-validated');

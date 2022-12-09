@@ -94,9 +94,9 @@ export default function CreateElement(options, Element){
         return Element;
     }
 
-    const getOriginalOptions = function getOriginalOptions(){
-        return options;
-    }
+    // const getOriginalOptions = function getOriginalOptions(){
+    //     return options;
+    // }
 
     /** 
      * @name getCallStack
@@ -138,7 +138,7 @@ export default function CreateElement(options, Element){
     Element.SetCustomProperty = SetCustomProperty;
     Element.setCustomProperty = SetCustomProperty;
     Element.render = render;
-    Element.getOriginalOptions = getOriginalOptions;
+    // Element.getOriginalOptions = getOriginalOptions;
     // Element.getCallStack = getCallStack;
 
     return Element;

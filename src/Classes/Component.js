@@ -57,7 +57,7 @@ class Component {
     }
 
     getOriginalOptions(){
-        return this.Element.getOriginalOptions();
+        return this.options;
     }
 
     getCallStack(){
