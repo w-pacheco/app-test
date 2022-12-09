@@ -5,7 +5,7 @@ import './node_modules/jquery/dist/jquery.js';
 import './node_modules/bootstrap/dist/js/bootstrap.js';
 import './node_modules/pdfmake/build/pdfmake.js';
 import './node_modules/pace-js/pace.js'
-// import SharePointApi from './src/Libraries/SharePointApi/src/SharePointApi.js';
+import SharePointApi from './src/Libraries/SharePointApi/src/SharePointApi.js';
 
 // import * as Settings from './app.Settings.js';
 // import CreateElement from './src/Actions/Element.Create.js';
@@ -20,6 +20,18 @@ const App = new Application();
 
 export default App;
 
+// export const Web = {};
+// export const Route = new SharePointApi({
+//     method: 'jQuery',
+//     verbose: false,
+//     statusCode: {
+//         307: function() {
+//             alert( 'The application needs to refresh.');
+//             return location.reload();
+//         }
+//     }
+// });
+
 async function init(){
 
     console.info(App);
@@ -29,6 +41,14 @@ async function init(){
     //     genre: 'Country'
     // });
     // console.info(album)
+
+    // const {
+    //     WebOptions,
+    //     localhost,
+    // } = Settings;
+
+    /** Load Settings; */
+    // await Settings.default(App);
 
     const component = new Component({
         tag: 'div',

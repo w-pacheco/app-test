@@ -37,8 +37,18 @@ class Component {
      * @returns component
      */
     render(parent){
-        if (parent) this.Element.render(parent);
-        else this.Element.render();
+
+        /** If a parent is passed in the argument and is and instanceof HTMLElement; */
+        if (!!parent 
+        && parent instanceof HTMLElement) parent.append(this.Element);
+
+        else if (!!this.options.parent 
+        && this.options.parent instanceof HTMLElement) this.options.parent.append(this.Element);
+        // else
+        // {
+        // console.info(Element);
+        // console.info('%cCreate Element | Oops, Something went wrong!', 'color: gold;');
+        // }
         return this;
     }
 
